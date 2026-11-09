@@ -1,0 +1,122 @@
+<section class="tienda">
+  <nav class="navegacion">
+    <a routerLink="/">Inicio</a>
+  </nav>
+
+  <header class="encabezado">
+    <h1>TodoTienda</h1>
+    <p>Encuentra y administra tus productos favoritos.</p>
+  </header>
+
+  <section class="formulario">
+    <h2>{{ editando ? 'Actualizar producto' : 'Agregar producto' }}</h2>
+
+    <form (ngSubmit)="guardarProducto()" #formulario="ngForm" novalidate>
+      <label for="nombre">Nombre del producto</label>
+      <input
+        id="nombre"
+        name="nombre"
+        type="text"
+        [(ngModel)]="producto.nombre"
+        placeholder="Ej. Audífonos Bluetooth"
+        required
+      />
+
+      <label for="precio">Precio (S/)</label>
+      <input
+        id="precio"
+        name="precio"
+        type="number"
+        [(ngModel)]="producto.precio"
+        min="0"
+        step="0.01"
+        required
+      />
+
+      <label for="categoria">Categoría</label>
+      <input
+        id="categoria"
+        name="categoria"
+        type="text"
+        [(ngModel)]="producto.categoria"
+        placeholder="Ej. Audio"
+        required
+      />
+
+      <label for="imagen">Enlace de la imagen (URL)</label>
+      <input
+        id="imagen"
+        name="imagen"
+        type="url"
+        [(ngModel)]="producto.imagen"
+        placeholder="https://ejemplo.com/producto.jpg"
+      />
+
+      <div class="vista-previa" *ngIf="producto.imagen">
+        <p>Vista previa:</p>
+        <img
+          [src]="producto.imagen"
+          [alt]="producto.nombre || 'Vista previa del producto'"
+        />
+      </div>
+
+      <button type="submit" [disabled]="formulario.invalid">
+        {{ editando ? 'Guardar cambios' : 'Registrar producto' }}
+      </button>
+
+      <button
+        *ngIf="editando"
+        type="button"
+        class="cancelar"
+        (click)="cancelarEdicion()"
+      >
+        Cancelar edición
+      </button>
+    </form>
+
+    <p class="mensaje" *ngIf="mensaje">{{ mensaje }}</p>
+    <p class="error" *ngIf="error">{{ error }}</p>
+  </section>
+
+  <section class="catalogo">
+    <h2>Nuestros productos</h2>
+
+    <p *ngIf="productos.length === 0">
+      Todavía no hay productos registrados.
+    </p>
+    <p>Productos cargados: {{ productos.length }}</p>
+
+    <div class="productos" *ngIf="productos.length > 0">
+
+      <article class="producto-card" *ngFor="let item of productos">
+        <img
+          *ngIf="item.imagen"
+          [src]="item.imagen"
+          [alt]="item.nombre"
+        />
+
+        <div class="sin-imagen" *ngIf="!item.imagen">
+          Sin imagen
+        </div>
+
+        <h3>{{ item.nombre }}</h3>
+        <p>{{ item.categoria }}</p>
+        <p class="precio">S/ {{ item.precio | number:'1.2-2' }}</p>
+
+        <div class="acciones">
+          <button type="button" (click)="editarProducto(item)">
+            Editar
+          </button>
+
+          <button
+            type="button"
+            class="eliminar"
+            (click)="eliminarProducto(item)"
+          >
+            Eliminar
+          </button>
+        </div>
+      </article>
+    </div>
+  </section>
+</section>

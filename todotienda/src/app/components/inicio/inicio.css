@@ -1,0 +1,115 @@
+
+.inicio {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f1f5f9;
+  color: #1e293b;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.inicio * {
+  box-sizing: border-box;
+}
+
+.inicio header {
+  text-align: center;
+  padding: 40px 20px;
+  background: #1e3a8a;
+  color: white;
+  border-radius: 16px;
+}
+
+.inicio header h1 {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.inicio header p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.inicio nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 25px 0;
+  flex-wrap: wrap;
+}
+
+.inicio nav a {
+  color: #1d4ed8;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.inicio nav a:hover {
+  text-decoration: underline;
+}
+
+.presentacion {
+  width: 100%;
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 35px;
+  background: white;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.presentacion h2 {
+  color: #1e3a8a;
+}
+
+.presentacion p {
+  line-height: 1.6;
+}
+
+.boton {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.boton:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 600px) {
+  .inicio {
+    padding: 20px 12px;
+  }
+
+  .inicio header {
+    padding: 30px 16px;
+  }
+
+  .inicio header h1 {
+    font-size: 28px;
+  }
+
+  .inicio header p {
+    font-size: 16px;
+  }
+
+  .inicio nav {
+    gap: 8px;
+  }
+
+  .presentacion {
+    margin: 24px auto;
+    padding: 24px 16px;
+  }
+
+  .boton {
+    max-width: 100%;
+  }
+}

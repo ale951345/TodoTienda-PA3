@@ -1,0 +1,18 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno
+.env
+.env.*
+
+# Permitir el archivo de ejemplo
+!.env.example
+
+# Archivos generados
+dist/
+.angular/
+coverage/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db

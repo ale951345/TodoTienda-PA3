@@ -1,0 +1,44 @@
+
+<section class="registro">
+  <h1>Crear cuenta</h1>
+  <p>Regístrate para utilizar TodoTienda.</p>
+
+  <form (ngSubmit)="registrar()">
+    <label>Nombre</label>
+    <input
+      type="text"
+      name="nombre"
+      [(ngModel)]="nombre"
+      placeholder="Ingresa tu nombre"
+      required
+    >
+
+    <label>Correo electrónico</label>
+    <input
+      type="email"
+      name="correo"
+      [(ngModel)]="correo"
+      placeholder="Ingresa tu correo"
+      required
+    >
+
+    <label>Contraseña</label>
+    <input
+      type="password"
+      name="password"
+      [(ngModel)]="password"
+      placeholder="Mínimo 6 caracteres"
+      minlength="6"
+      required
+    >
+
+    <button type="submit">Registrarme</button>
+  </form>
+
+  <p *ngIf="mensaje" class="mensaje">{{ mensaje }}</p>
+  <p *ngIf="error" class="error">{{ error }}</p>
+
+  <p>¿Ya tienes una cuenta?
+    <a routerLink="/login">Inicia sesión</a>
+  </p>
+</section>
